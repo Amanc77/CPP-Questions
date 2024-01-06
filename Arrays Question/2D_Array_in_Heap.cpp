@@ -28,7 +28,7 @@ int main()
     {
         for(j=0;j<4;j++)
         {
-            cout<<A[i][j]<<" ";
+            cout<<A[i][j]<<" ";//""is use for space
         }
         cout<<endl;
     }
