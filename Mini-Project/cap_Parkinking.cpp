@@ -51,6 +51,9 @@ int main()
         {
             exit(0);
         }
+        else{
+            cout<<" you are enter invalid key Now you have to enter valid key "<<endl;
+        }
     }
     return 0;
 }
