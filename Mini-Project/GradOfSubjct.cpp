@@ -20,7 +20,7 @@ int main()
 
     if (percentage >= 90)
     {
-        cout << percentage << " by this percentage you will get Grade A" << endl;
+        cout <<"Totatal parcentge is "<< percentage << " by this percentage you will get Grade A" << endl;
     }
     else if (percentage >= 80)
     {
