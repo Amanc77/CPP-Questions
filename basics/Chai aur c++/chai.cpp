@@ -62,7 +62,7 @@ float mytea = 857.80;
    cout<<"Now enter how many tea he has purchesed form my tea stal ";
   cin>>teaCount;
 
-  if(teaCount>=15 && TocheckStudent == 1)
+  if(teaCount>=15 || TocheckStudent == 1)
        cout<<"you are aligible for subcription discount";
 
   else 
