@@ -14,7 +14,7 @@ void PointerUsingArray2()
     
     int *p;
     p = new int[5];
-    p[0] = 1; p[2] = 4;
+    p[0] = 1; p[2] = 4; 
     p[3] = 6;
     for(int i = 0 ; i < 5 ; i++)
     {
@@ -35,8 +35,11 @@ int main()
 
     cout<<*p<<endl;
 
+    PointerUsingArray();
     PointerUsingArray2();
 
+
+     p = nullptr;
     return 0;
 }
 

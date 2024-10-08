@@ -21,6 +21,15 @@ int main()
     callbyrefrence(chaicups);
      cout<<"\ntotal cups after call by refrence functin call "<<chaicups<<endl;
     
+
+        auto add = [](int a, int b) {
+    return a + b;
+   };
+
+    int result = add(5, 3);  
+    cout <<result;
  
+    const int i = 50 ; // it can't be modified it is only read only  data.
+    
     return 0;
 }

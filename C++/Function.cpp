@@ -9,7 +9,6 @@ int add(int a , int b , int e = 0){ // formal parameter;
 }
 
 
-
 void swap(int *x, int  *y)
 {
     int temp = *x;
