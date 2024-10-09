@@ -19,12 +19,34 @@ int search(vector<int>A,int n, int key){   // by vector
      return -1 ;
     
 }
+
+int searchForString(string A[],int n, string key){   // by vector
+    for(int i = 0 ; i < n ;i++)
+    {
+        if(A[i] == key)
+              return i;
+        
+           
+    }
+     return -1 ;
+    
+}
 int main()
 { 
   int n;
   cout<<"enter size on an Array ";
   cin>>n;
-  vector<int> A(n);
+//   vector<int> A(n);
+//   cout <<"enter value for array \n";
+//   for(int i = 0 ; i < n; i++){
+//     cin >> A[i];
+//   }
+//    cout << "The entered values are:\n";
+//     for (int i = 0; i < n; i++) {
+//         cout << A[i] << " ";  // Print the array elements
+//     }
+
+  string A[n];
   cout <<"enter value for array \n";
   for(int i = 0 ; i < n; i++){
     cin >> A[i];
@@ -33,14 +55,17 @@ int main()
     for (int i = 0; i < n; i++) {
         cout << A[i] << " ";  // Print the array elements
     }
+
     cout << endl;
 
-    int key;
+    string key;
     cout<<"now enter your key for search ";
     cin>>key;
     // int target = search(A,  n ,  key);
 
-     int target = search(A, n, key);
+    //  int target = search(A, n, key);
+
+    int target = searchForString(A,n,key);
 
      if ( target != -1)
             cout<<"eliment found at index "<<target<<endl;
