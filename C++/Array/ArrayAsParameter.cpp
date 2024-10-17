@@ -20,6 +20,7 @@ int * fun (int size)
     return p;
 }
 
+
 int main()
 { 
     int A[5] = {1,3,4,5,6};

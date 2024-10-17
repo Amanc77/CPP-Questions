@@ -41,7 +41,7 @@ int main()
     swap(&c,&d);//class by address
     cout<<c<<" "<<d<<endl;
 
-    classbyReference(d,e);
+    classbyReference(d,e);// actual parameter
     cout<<"swaping by call by reference  "<<d<<" "<<e;
 
    

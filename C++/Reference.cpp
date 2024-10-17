@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
     int a = 19;
-    int &r = a;
+    int &r = a; // r mean a; neekname.
 
     cout<<a<<endl;
     cout<<r<<endl;
