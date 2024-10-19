@@ -18,12 +18,18 @@ class Rectangle
     {
         return length*breadth;
     }
+   
+   ~Rectangle()
+   {
+    cout<<"Destructor \n";
+   }
+
 
 };
 int main()
 { 
     Rectangle r (5,3);
-    cout<<"area is "<<r.area();
+    cout<<"area is "<<r.area()<<endl;
  
  
     return 0;

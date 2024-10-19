@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug C++",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",  // Path to the compiled executable
+            "args": [],              // Command-line arguments (if any)
+            "stopAtEntry": false,    // Change to true if you want the debugger to stop at the entry point
+            "cwd": "${fileDirname}", // Current working directory
+            "environment": [],
+            "externalConsole": true, // Set to true if you want to use an external terminal for debugging
+            "MIMode": "gdb",         // Mode for GDB (change if using another debugger)
+            "miDebuggerPath": "C:/MinGW/bin/gdb.exe", // Adjust this to the path where GDB is installed
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build", // Ensures that the program is built before debugging
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ]
+}
