@@ -179,56 +179,99 @@ int avrageofN (struct Array arr)
 
 
 
+void ReverseArray(struct Array *arr)
+{
+    for(int i =0 , j = arr->length-1; i<j; i++,j--  )
+    {
+        swap(arr->A[i],arr->A[j]);
+    }
+
+}
+
+
+void LeftShift(struct Array arr, int positionCount)
+
+{
+    for(int i = 0 ; i<arr.length - positionCount; i++)
+    { 
+       
+        arr.A[i] = arr.A[i+positionCount];
+        
+        
+
+    }
+    for(int i = arr.length - positionCount; i <arr.length; i++)
+    { 
+       
+      arr.A[i] = 0;
+        
+        
+
+    }
+    
+    Display(arr);
+}
+
+
+void RightShift(struct Array arr, int positionCount)
+
+{
+    for(int i = arr.length -1 ; i >= positionCount; i--)
+    { 
+       
+        arr.A[i] = arr.A[i-positionCount];
+        
+        
+
+    }
+    for(int i = 0; i <positionCount; i++)
+    { 
+       
+      arr.A[i] = 0;
+        
+        
+
+    }
+    
+    Display(arr);
+}
+
+int isSort(struct Array arr)
+{
+    int i;
+    for (int i=0; i<arr.length-1; i++)
+    {
+        if(arr.A[i] <= arr.A[i+1])
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
 
 
 int main()
 { 
     struct Array arr= {{1,2,3,4,5,6,7,8,9,10},10,15} ; // object arr is created;
    
-    cout<<"before append \n";
+
+    struct Array arr2 = {{5,23,234,524,634,43},6,10};
+
+    struct Array *arr3;
+    Display(arr);
+
+   cout<<"reversing Array ..\n";
+   ReverseArray(&arr);
    Display(arr);
-   Append(&arr,11);
-    cout<<"after append \n";
-   Display(arr);
+   ReverseArray(&arr);
 
-    cout<<"before insertion \n";
-   Display(arr);
-
-   insert(&arr,0,444);
-    cout<<"before insertion \n";
-   Display(arr);
-
-
-  
-    cout<<"now deleting index 1 element \n";
-    Delete(&arr,1);
-   Display(arr);
-
-
+   cout<<"left shift ";
+   LeftShift(arr,3);
     
+   
+   cout<<"right shift ";
+   RightShift(arr,4);
     
- leanearSearch(arr, 8);
 
-
-
- int key = 9;
-    int index = BinarySearch(arr, key);
-
-    if (index != -1) {
-        cout << "Element " << key << " found at index: " << index << endl;
-    } else {
-        cout << "Element " << key << " not found in the array." << endl;
-    }
-
-
-    cout<<get(arr,4);
-
-    cout<<"maxmimam number is "<<max(arr)<<endl;
-
- cout<<"minimum number is "<<min(arr)<<endl;
-
- cout<<"sum of digits are is "<<SumOfDigit(arr)<<endl;
-
- 
     return 0;
 }
