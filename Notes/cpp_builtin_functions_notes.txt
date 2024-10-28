@@ -1,0 +1,542 @@
+
+1. sort (Sorts a range)
+sort is used to sort elements in a range in non-decreasing order.
+
+Example:
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {3, 1, 4, 2, 5};
+    sort(arr.begin(), arr.end());
+
+    cout << "Sorted array: ";
+    for (int num : arr)
+        cout << num << " ";  // Output: 1 2 3 4 5
+    return 0;
+}
+
+2. reverse (Reverses a range)
+reverse is used to reverse elements in a range.
+
+Example:
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+    reverse(arr.begin(), arr.end());
+
+    cout << "Reversed array: ";
+    for (int num : arr)
+        cout << num << " ";  // Output: 5 4 3 2 1
+    return 0;
+}
+
+3. accumulate (Sum of elements in a range)
+accumulate computes the sum of elements in a range.
+
+Example:
+#include <iostream>
+#include <numeric>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+    int sum = accumulate(arr.begin(), arr.end(), 0);
+
+    cout << "Sum of array: " << sum << endl;  // Output: 15
+    return 0;
+}
+
+4. count (Counts occurrences of a value)
+count returns the number of occurrences of a value in a range.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 2, 3, 4};
+    int cnt = count(arr.begin(), arr.end(), 2);
+
+    cout << "Number of occurrences of 2: " << cnt << endl;  // Output: 2
+    return 0;
+}
+
+5. find (Finds an element in a range)
+find searches for an element in a range and returns an iterator to the element.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+    auto it = find(arr.begin(), arr.end(), 3);
+
+    if (it != arr.end())
+        cout << "Element found at index: " << it - arr.begin() << endl;  // Output: 2
+    else
+        cout << "Element not found" << endl;
+
+    return 0;
+}
+
+6. binary_search (Binary search in a sorted range)
+binary_search checks if an element exists in a sorted range.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+
+    if (binary_search(arr.begin(), arr.end(), 3)) {
+        cout << "3 is present in the array." << endl;  // Output: 3 is present in the array.
+    } else {
+        cout << "3 is not present in the array." << endl;
+    }
+
+    return 0;
+}
+
+7. lower_bound and upper_bound (Finds the lower and upper bounds)
+lower_bound returns an iterator to the first element that is not less than a given value, and upper_bound returns an iterator to the first element that is greater than the given value.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 2, 3, 4, 5};
+    auto lb = lower_bound(arr.begin(), arr.end(), 2);
+    auto ub = upper_bound(arr.begin(), arr.end(), 2);
+
+    cout << "Lower bound of 2: " << lb - arr.begin() << endl;  // Output: 1
+    cout << "Upper bound of 2: " << ub - arr.begin() << endl;  // Output: 3
+    return 0;
+}
+
+8. max_element and min_element (Finds the maximum and minimum elements)
+max_element and min_element return iterators to the largest and smallest elements in a range, respectively.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+    auto max_it = max_element(arr.begin(), arr.end());
+    auto min_it = min_element(arr.begin(), arr.end());
+
+    cout << "Max element: " << *max_it << endl;  // Output: 5
+    cout << "Min element: " << *min_it << endl;  // Output: 1
+    return 0;
+}
+
+9. next_permutation and prev_permutation (Generates the next or previous permutation)
+next_permutation and prev_permutation generate the next or previous lexicographical permutation of a range.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 3};
+
+    next_permutation(arr.begin(), arr.end());
+    cout << "Next permutation: ";
+    for (int num : arr)
+        cout << num << " ";  // Output: 1 3 2
+
+    prev_permutation(arr.begin(), arr.end());
+    cout << "
+Previous permutation: ";
+    for (int num : arr)
+        cout << num << " ";  // Output: 1 2 3
+
+    return 0;
+}
+
+10. unique (Removes consecutive duplicate elements)
+unique removes consecutive duplicates in a range.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 2, 3, 3, 4};
+
+    auto it = unique(arr.begin(), arr.end());
+    arr.resize(distance(arr.begin(), it));  // Resize the vector to remove undefined elements
+
+    cout << "Array after removing duplicates: ";
+    for (int num : arr)
+        cout << num << " ";  // Output: 1 2 3 4
+
+    return 0;
+}
+
+
+# Restarting the process for the remaining functions (11 to 36)
+cpp_functions_remaining_text = """
+11. distance (Finds the number of elements between two iterators)
+distance returns the number of elements between two iterators.
+
+Example:
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+
+    auto it = find(arr.begin(), arr.end(), 4);
+
+    int dist = distance(arr.begin(), it);
+    cout << "Distance from beginning to 4: " << dist << endl;  // Output: 3
+    return 0;
+}
+
+12. equal (Compares two ranges)
+equal checks if two ranges are equal.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr1 = {1, 2, 3};
+    vector<int> arr2 = {1, 2, 3};
+
+    if (equal(arr1.begin(), arr1.end(), arr2.begin())) {
+        cout << "The arrays are equal." << endl;  // Output: The arrays are equal.
+    } else {
+        cout << "The arrays are not equal." << endl;
+    }
+
+    return 0;
+}
+
+13. fill (Fills a range with a specified value)
+fill assigns the specified value to all elements in a range.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr(5);  // Vector of size 5
+
+    fill(arr.begin(), arr.end(), 42);
+
+    cout << "Filled array: ";
+    for (int num : arr)
+        cout << num << " ";  // Output: 42 42 42 42 42
+
+    return 0;
+}
+
+14. iota (Fills a range with sequentially increasing values)
+iota assigns sequentially increasing values to elements in a range.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <numeric>
+
+using namespace std;
+
+int main() {
+    vector<int> arr(5);
+
+    iota(arr.begin(), arr.end(), 1);  // Start from 1
+
+    cout << "Sequential array: ";
+    for (int num : arr)
+        cout << num << " ";  // Output: 1 2 3 4 5
+
+    return 0;
+}
+
+15. swap (Swaps two values)
+swap exchanges the values of two variables.
+
+Example:
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int a = 10, b = 20;
+
+    swap(a, b);
+
+    cout << "a: " << a << ", b: " << b << endl;  // Output: a: 20, b: 10
+    return 0;
+}
+
+16. copy (Copies elements from one range to another)
+copy copies elements from one range to another.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr1 = {1, 2, 3, 4, 5};
+    vector<int> arr2(5);
+
+    copy(arr1.begin(), arr1.end(), arr2.begin());
+
+    cout << "Copied array: ";
+    for (int num : arr2)
+        cout << num << " ";  // Output: 1 2 3 4 5
+
+    return 0;
+}
+
+17. transform (Applies a function to a range)
+transform applies a function to each element of a range and stores the result in another range.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+    vector<int> result(5);
+
+    transform(arr.begin(), arr.end(), result.begin(), [](int x) { return x * 2; });
+
+    cout << "Transformed array: ";
+    for (int num : result)
+        cout << num << " ";  // Output: 2 4 6 8 10
+
+    return 0;
+}
+
+18. for_each (Applies a function to each element in a range)
+for_each applies a function to each element in a range.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+
+    for_each(arr.begin(), arr.end(), [](int x) { cout << x * 2 << " "; });  // Output: 2 4 6 8 10
+
+    return 0;
+}
+
+19. partition (Partitions a range based on a predicate)
+partition rearranges the elements in a range so that elements satisfying a predicate come before those that do not.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+
+    partition(arr.begin(), arr.end(), [](int x) { return x % 2 == 0; });
+
+    cout << "Partitioned array: ";
+    for (int num : arr)
+        cout << num << " ";  // Output: 2 4 1 3 5
+
+    return 0;
+}
+
+20. stable_partition (Stable version of partition)
+stable_partition is similar to partition but preserves the relative order of elements.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+
+    stable_partition(arr.begin(), arr.end(), [](int x) { return x % 2 == 0; });
+
+    cout << "Stable partitioned array: ";
+    for (int num : arr)
+        cout << num << " ";  // Output: 2 4 1 3 5
+
+    return 0;
+}
+
+21. merge (Merges two sorted ranges)
+merge combines two sorted ranges into a new sorted range.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr1 = {1, 3, 5};
+    vector<int> arr2 = {2, 4, 6};
+    vector<int> result(6);
+
+    merge(arr1.begin(), arr1.end(), arr2.begin(), arr2.end(), result.begin());
+
+    cout << "Merged array: ";
+    for (int num : result)
+        cout << num << " ";  // Output: 1 2 3 4 5 6
+
+    return 0;
+}
+
+22. includes (Checks if a range contains another range)
+includes returns true if the first sorted range contains all the elements of the second sorted range.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr1 = {1, 2, 3, 4, 5};
+    vector<int> arr2 = {2, 4};
+
+    if (includes(arr1.begin(), arr1.end(), arr2.begin(), arr2.end())) {
+        cout << "arr1 contains all elements of arr2." << endl;  // Output: arr1 contains all elements of arr2.
+    } else {
+        cout << "arr1 does not contain all elements of arr2." << endl;
+    }
+
+    return 0;
+}
+
+23. set_union (Computes the union of two ranges)
+set_union computes the union of two sorted ranges.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr1 = {1, 2, 3};
+    vector<int> arr2 = {2, 3, 4};
+    vector<int> result(6);
+
+    auto it = set_union(arr1.begin(), arr1.end(), arr2.begin(), arr2.end(), result.begin());
+
+    result.resize(it - result.begin());  // Resize the result vector
+
+    cout << "Union of arr1 and arr2: ";
+    for (int num : result)
+        cout << num << " ";  // Output: 1 2 3 4
+
+    return 0;
+}
+
+24. set_intersection (Computes the intersection of two ranges)
+set_intersection computes the intersection of two sorted ranges.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr1 = {1, 2, 3};
+    vector<int> arr2 = {2, 3, 4};
+    vector<int> result(3);
+
+    auto it = set_intersection(arr1.begin(), arr1.end(), arr2.begin(), arr2.end(), result.begin());
+
+    result.resize(it - result.begin());  // Resize the result vector
+
+    cout << "Intersection of arr1 and arr2: ";
+    for (int num : result)
+        cout << num << " ";  // Output: 2 3
+
+    return 0;
+}
+
+25. set_difference (Computes the difference of two ranges)
+set_difference computes the elements in the first range that are not in the second range.
+
+Example:
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> arr1 = {1, 2, 3};
+    vector<int> arr2 = {2, 3, 4};
+    vector<int> result(3);
+
+    auto it = set_difference(arr1
+
