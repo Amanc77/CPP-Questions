@@ -101,7 +101,7 @@ using namespace std;
     - Description: Returns a substring starting from the specified position.
     - Example:
       string str = "Hello World";
-      string sub = str.substr(6, 5);
+      string sub = str.substr(6, 5); from , too.
       cout << sub << endl;  // Output: World
 
 13. Converting String to Integer
