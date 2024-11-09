@@ -35,6 +35,38 @@ void Insert(struct Node* &first , int x)
 
 }
 
+void InsertionAtBegining(Node * &first , int x){
+    Node *temp = new Node();
+    temp->data = x; 
+    temp->next = nullptr; 
+  Node  *last = first;
+  
+  temp->next = first;
+  first = temp;
+}
+
+
+void InsertionAtLast(Node * &first , int x){
+    Node *temp = new Node();
+    temp->data = x; 
+    temp->next = nullptr; 
+
+    if(first == nullptr)
+    {
+        first = temp;
+    }
+
+    Node *last = first;
+    while(last->next != nullptr){
+        last = last->next;
+
+    }
+    last->next = temp;
+}
+
+
+
+
 void Display(struct Node *first )
 {
     
@@ -163,6 +195,47 @@ int MininLL(Node *p){
 
 }
 
+bool SerchLL(Node *p,int key)
+{
+   while(p)
+   {
+    if(p->data == key)
+    {
+        return true;
+    }
+    p = p->next;
+   }
+   return false;
+}
+
+
+void InsertAtPosition(Node* &first ,int position, int x){
+
+    if(position > countNodeinLL(first)){
+        return ;
+    }
+
+
+    Node *temp = new Node();
+    temp->data = x;
+    temp->next = nullptr;
+
+    Node *p, *last;
+    
+    last = first;
+
+    int count = 0;
+    
+    while(count < position - 1 )
+    {   
+        last = last->next;
+        count ++;
+    }
+   temp->next = last->next;
+   last->next = temp;
+
+
+}
 
 
 int main()
@@ -171,7 +244,7 @@ int main()
 
     
 
-    int A[] = {4,13,5,5,11,5};
+    int A[] = {4,5,15,25,211,555};
     int n = sizeof(A) / sizeof(A[0]);
     
     createLL(A,n);
@@ -184,20 +257,37 @@ int main()
 
 
    cout<<"Printing Linked list"<<endl;
+
+   InsertionAtBegining(first, 44);
+   InsertionAtLast(first,77);
     Display(first);
+
+    
 
    //RdisplayLL(first);
 
 //    cout<<"Printing Linked list in reverse order "<<endl;
 
 //    RRdisplayLL(first);
-    
+    int check = SerchLL(first,5);
+    if(check){
+                 cout<<"eliment is present"<<endl;
+
+    }
+    else{
+                 cout<<"eliment is not present"<<endl;
+
+    }
 
     cout<<"Total number of node is "<<RcountNodeinLL(first)<<endl;
 
     cout<<"Total sum of all number is "<<RNodeDataSum(first)<<endl;
  
     cout<<"Maximum  number in NODE is "<<MininLL(first)<<endl;
+
+
+    InsertAtPosition(first,55,324);
+    Display(first);
 
     return 0;
 }
