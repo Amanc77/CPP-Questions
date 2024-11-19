@@ -42,6 +42,7 @@ int pop(Stack &st) {
     } else {
         x = st.s[st.top];
         st.top--;
+        
     }
     return x;
 }

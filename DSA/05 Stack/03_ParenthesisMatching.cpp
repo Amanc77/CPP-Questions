@@ -15,7 +15,7 @@ bool isEmpty() {
 
 // Function to check if the stack is full
 bool isFull() {
-    return !true;
+    return !true;  //ye kabhi full hoga hi nahi bahut rair hai
     
 }
 
@@ -28,8 +28,6 @@ void push( int x) {
     
         Top = t;
     }
-    
-    
 }
 
 // Pop function to remove an element from the stack
@@ -83,15 +81,54 @@ void Display() {
         p = p->next;
     }
     cout << endl;
-
-
-    
 }
 
+bool isBalanceDemo(string exp){
+    int n = exp.size();
+    for(int i = 0 ; i<n ;i++){
+        if(exp[i] == '('){
+            push(exp[i]);
+        }
+        else if(exp[i] == ')'){
+            if(isEmpty()){
+                return false;
+            }
+            pop();
+        }
+    }
+    return isEmpty();
+}
+
+bool isBalance(string exp){
+    int n = exp.size();
+    for(int i = 0 ; i<n ;i++){
+        if(exp[i] == '(' || exp[i] == '{' || exp[i] == '['  ){
+            push(exp[i]);
+        }
+        else if(exp[i] == ')' || exp[i] == '}' || exp[i] == ']'  ){
+            if(isEmpty()){
+                return false;
+            }
+            else if ((exp[i] == ')' && stackTop() == '(') ||
+                (exp[i] == '}' && stackTop() == '{') ||
+                (exp[i] == ']' && stackTop() == '[')) {
+                pop(); // Valid pair, so pop the stack
+            } else {
+                return false; // Mismatch found
+            }
+        }
+    }
+    return isEmpty();
+}
 int main() {
   
-   string s = "(a+b*(c/e))" ;
+   string str = "a(+(b*(c/e)))" ;
 
+   cout<<"let's check Expresion balancing "<<isBalance(str)<<endl;
+
+   string str2 = "{([a+b*[c-d]])/e}";
+
+   cout<<"let's check Expresion2  balancing "<<isBalance(str2)<<endl;
    
 
     return 0;
