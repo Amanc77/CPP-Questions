@@ -62,7 +62,7 @@ int peek(int index) {
         return -1;
     }
     Node *p = Top;
-    for(int i = 0 ; p != nullptr && i < index-1; i++){
+    for(int i = 0 ; p != nullptr && i < index; i++){
         p = p->next;
      }
     if(p != nullptr){
