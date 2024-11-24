@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 #include <queue>
 #include <stack>
@@ -25,7 +27,7 @@ public:
     Tree();  
     ~Tree();
 
-    void CreateTree();
+    void CreateBSTree();
     void Preorder(Node* p);
     void Preorder() { Preorder(root); }
     void Inorder(Node* p);
@@ -69,13 +71,9 @@ void Tree::deleteTree(Node* p) {
     }
 }
 
-// Create the tree using level-order input
-void Tree::CreateTree() {
-    Node* p;
-    Node* t;
+// Creatint BinarySearch treee.
+void Tree::CreateBSTree() {
     int x;
-    queue<Node*> q;
-
     cout << "Enter root data: ";
     cin >> x;
 
@@ -83,35 +81,43 @@ void Tree::CreateTree() {
     root->data = x;
     root->lchild = nullptr;
     root->rchild = nullptr;
-    q.emplace(root);
 
-    while (!q.empty()) {
-        p = q.front();
-        q.pop();
-
-        cout << "Enter left child of " << p->data << " (-1 for no child): ";
+    while (true) {
+        cout << "Enter value to insert (-1 to stop): ";
         cin >> x;
-        if (x != -1) {
-            t = new Node;
-            t->data = x;
-            t->lchild = nullptr;
-            t->rchild = nullptr;
-            p->lchild = t;
-            q.emplace(t);
+        if (x == -1) break;
+
+        Node* p = root;
+        Node* t = nullptr;
+
+        while (p != nullptr) {
+            t = p;
+            if (x < p->data)
+                p = p->lchild;
+            else if (x > p->data)
+                p = p->rchild;
+            else {
+                cout << "Duplicate value not allowed in BST.\n";
+                t = nullptr;
+                break;
+            }
         }
 
-        cout << "Enter right child of " << p->data << " (-1 for no child): ";
-        cin >> x;
-        if (x != -1) {
-            t = new Node;
-            t->data = x;
-            t->lchild = nullptr;
-            t->rchild = nullptr;
-            p->rchild = t;
-            q.emplace(t);
+        if (t != nullptr) {
+            Node* newNode = new Node;
+            newNode->data = x;
+            newNode->lchild = nullptr;
+            newNode->rchild = nullptr;
+
+            if (x < t->data)
+                t->lchild = newNode;
+            else
+                t->rchild = newNode;
         }
     }
 }
+
+
 
 // Recursive traversals
 void Tree::Preorder(Node* p) {
@@ -234,7 +240,7 @@ int Tree::countInternalNodes(Node* p) {
 int main() {
     Tree bt;
 
-    bt.CreateTree();
+    bt.CreateBSTree();
     cout << "\nPreorder: ";
     bt.Preorder();
     cout << "\nInorder: ";
