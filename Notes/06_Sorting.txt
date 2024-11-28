@@ -1,0 +1,142 @@
+
+
+Initial Array: [6, 3, 8, 5, 2, 7]
+
+1. Bubble Sort:
+Idea: Compare adjacent elements, swap if needed, and repeat.
+
+Steps:
+1. Compare (6, 3), swap → [3, 6, 8, 5, 2, 7]
+2. Compare (6, 8), no swap → [3, 6, 8, 5, 2, 7]
+3. Compare (8, 5), swap → [3, 6, 5, 8, 2, 7]
+4. Compare (8, 2), swap → [3, 6, 5, 2, 8, 7]
+5. Compare (8, 7), swap → [3, 6, 5, 2, 7, 8]
+
+Repeat for subsequent passes until sorted:
+- After Pass 2: [3, 5, 2, 6, 7, 8]
+- After Pass 3: [3, 2, 5, 6, 7, 8]
+- After Pass 4: [2, 3, 5, 6, 7, 8]
+Final Array: [2, 3, 5, 6, 7, 8]
+
+Code:
+void BubbleSort(int A[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (A[j] > A[j + 1]) {
+                swap(A[j], A[j + 1]);
+            }
+        }
+    }
+}
+
+2. Selection Sort:
+Idea: Find the smallest element and place it at the start.
+
+Steps:
+1. Find smallest (2), swap with first → [2, 3, 8, 5, 6, 7]
+2. Find next smallest (3), already in place → [2, 3, 8, 5, 6, 7]
+3. Find next smallest (5), swap with 8 → [2, 3, 5, 8, 6, 7]
+4. Find next smallest (6), swap with 8 → [2, 3, 5, 6, 8, 7]
+5. Find next smallest (7), swap with 8 → [2, 3, 5, 6, 7, 8]
+
+Final Array: [2, 3, 5, 6, 7, 8]
+
+Code:
+void SelectionSort(int A[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIdx = i;
+        for (int j = i + 1; j < n; j++) {
+            if (A[j] < A[minIdx]) {
+                minIdx = j;
+            }
+        }
+        swap(A[i], A[minIdx]);
+    }
+}
+
+3. Insertion Sort:
+Idea: Pick each element and place it in its correct position in the sorted part.
+
+Steps:
+1. Pick 3, insert before 6 → [3, 6, 8, 5, 2, 7]
+2. Pick 8, already in place → [3, 6, 8, 5, 2, 7]
+3. Pick 5, insert before 6 → [3, 5, 6, 8, 2, 7]
+4. Pick 2, insert at the start → [2, 3, 5, 6, 8, 7]
+5. Pick 7, insert before 8 → [2, 3, 5, 6, 7, 8]
+
+Final Array: [2, 3, 5, 6, 7, 8]
+
+Code:
+void InsertionSort(int A[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = A[i];
+        int j = i - 1;
+        while (j >= 0 && A[j] > key) {
+            A[j + 1] = A[j];
+            j--;
+        }
+        A[j + 1] = key;
+    }
+}
+
+4. Merge Sort:
+Idea: Divide the array, sort each half, and merge.
+
+Steps:
+1. Split into [6, 3, 8] and [5, 2, 7]
+2. Sort [6, 3, 8] → Split further: [6] and [3, 8], then merge → [3, 6, 8]
+3. Sort [5, 2, 7] → Split further: [5] and [2, 7], then merge → [2, 5, 7]
+4. Merge [3, 6, 8] and [2, 5, 7] → [2, 3, 5, 6, 7, 8]
+
+Final Array: [2, 3, 5, 6, 7, 8]
+
+Code:
+void Merge(int A[], int left, int mid, int right) {
+    int n1 = mid - left + 1, n2 = right - mid;
+    int L[n1], R[n2];
+    for (int i = 0; i < n1; i++) L[i] = A[left + i];
+    for (int i = 0; i < n2; i++) R[i] = A[mid + 1 + i];
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) A[k++] = (L[i] <= R[j]) ? L[i++] : R[j++];
+    while (i < n1) A[k++] = L[i++];
+    while (j < n2) A[k++] = R[j++];
+}
+
+void MergeSort(int A[], int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        MergeSort(A, left, mid);
+        MergeSort(A, mid + 1, right);
+        Merge(A, left, mid, right);
+    }
+}
+
+5. Quick Sort:
+Idea: Choose a pivot, place smaller items on one side and larger on the other.
+
+Steps:
+1. Choose pivot 7 → Partition → [6, 3, 5, 2, 7, 8]
+2. Left of 7: [6, 3, 5, 2] → Pivot 5 → Partition → [3, 2, 5, 6]
+3. Left of 5: [3, 2] → Pivot 2 → Partition → [2, 3]
+4. Merge sorted parts → [2, 3, 5, 6, 7, 8]
+
+Final Array: [2, 3, 5, 6, 7, 8]
+
+Code:
+int Partition(int A[], int low, int high) {
+    int pivot = A[high], i = low - 1;
+    for (int j = low; j < high; j++) {
+        if (A[j] < pivot) swap(A[++i], A[j]);
+    }
+    swap(A[i + 1], A[high]);
+    return i + 1;
+}
+
+void QuickSort(int A[], int low, int high) {
+    if (low < high) {
+        int pi = Partition(A, low, high);
+        QuickSort(A, low, pi - 1);
+        QuickSort(A, pi + 1, high);
+    }
+}
+
