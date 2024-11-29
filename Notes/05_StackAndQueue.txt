@@ -1,0 +1,57 @@
+What is a Queue?
+A queue is a linear data structure that follows the First In First Out (FIFO) principle.
+
+Elements are added at the rear and removed from the front.
+Example:
+Queue: [10, 20, 30]
+Enqueue 40 → [10, 20, 30, 40]
+Dequeue → [20, 30, 40]
+
+Basic Queue Operations:
+
+Enqueue: Add an element to the rear.
+Dequeue: Remove an element from the front.
+Peek: Get the front element without removing it.
+Check if empty.
+Types of Queues:
+
+Simple Queue: Follows FIFO.
+Circular Queue: Connects the last position back to the first.
+Priority Queue: Elements are dequeued based on priority.
+Deque (Double-Ended Queue): Allows insertion and deletion from both ends.
+What is a Stack?
+A stack is a linear data structure that follows the Last In First Out (LIFO) principle.
+
+Elements are added and removed from the top.
+Example:
+Stack: [10, 20, 30]
+Push 40 → [10, 20, 30, 40]
+Pop → [10, 20, 30]
+
+Basic Stack Operations:
+
+Push: Add an element to the top.
+Pop: Remove the top element.
+Peek: Get the top element without removing it.
+Check if empty.
+Applications of Stacks and Queues:
+
+Queue Applications:
+
+Process scheduling.
+Breadth-First Search (BFS).
+Printing job queues.
+Stack Applications:
+
+Depth-First Search (DFS).
+Expression evaluation (infix to postfix).
+Backtracking (e.g., maze solving).
+
+
+
+
+
+
+
+
+all code are given in Codefile.

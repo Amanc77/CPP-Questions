@@ -1,0 +1,163 @@
+
+Graph Notes
+
+What is a Graph?
+A graph is a non-linear data structure consisting of nodes (vertices) and edges.
+- Vertices (V): Points in the graph.
+- Edges (E): Connections between vertices.
+
+Example:
+Graph: G(V, E)
+V = {A, B, C, D}
+E = {(A, B), (A, C), (B, D), (C, D)}
+
+Types of Graphs
+1. Directed Graph: Edges have a direction (A → B).
+2. Undirected Graph: Edges do not have direction (A - B).
+3. Weighted Graph: Edges have weights/costs.
+4. Unweighted Graph: Edges do not have weights.
+5. Cyclic Graph: Contains cycles (e.g., A → B → C → A).
+6. Acyclic Graph: Does not contain cycles.
+7. Connected Graph: All vertices are reachable.
+8. Disconnected Graph: Not all vertices are connected.
+
+Graph Representation
+1. Adjacency Matrix:
+   A 2D matrix where Matrix[i][j] = 1 if there is an edge from vertex i to j, otherwise 0.
+
+   Example:
+   Vertices: {A, B, C}
+   Edges: {A - B, B - C}
+   Matrix:
+   A  B  C
+   A [0, 1, 0]
+   B [1, 0, 1]
+   C [0, 1, 0]
+
+2. Adjacency List:
+   A list where each vertex points to its connected vertices.
+   Example:
+   A -> B
+   B -> A, C
+   C -> B
+
+Graph Traversal Algorithms
+
+1. Breadth-First Search (BFS):
+   Idea: Explore neighbors level by level.
+   Use: Queue.
+   Time Complexity: O(V + E).
+   Steps:
+     1. Start from a vertex, mark it visited, and enqueue it.
+     2. Dequeue a vertex, explore its neighbors, and enqueue unvisited ones.
+
+   Example:
+   Graph: A - B - C
+   Start: A
+   BFS: A → B → C
+
+   Code:
+   #include <iostream>
+   #include <vector>
+   #include <queue>
+   using namespace std;
+
+   void BFS(int start, vector<int> adj[], bool visited[]) {
+       queue<int> q;
+       q.push(start);
+       visited[start] = true;
+       while (!q.empty()) {
+           int node = q.front();
+           q.pop();
+           cout << node << " ";
+           for (int neighbor : adj[node]) {
+               if (!visited[neighbor]) {
+                   q.push(neighbor);
+                   visited[neighbor] = true;
+               }
+           }
+       }
+   }
+
+2. Depth-First Search (DFS):
+   Idea: Explore as far as possible along each branch.
+   Use: Stack (or recursion).
+   Time Complexity: O(V + E).
+   Steps:
+     1. Start from a vertex, mark it visited, and explore its neighbors.
+
+   Example:
+   Graph: A - B - C
+   Start: A
+   DFS: A → B → C
+
+   Code:
+   #include <iostream>
+   #include <vector>
+   using namespace std;
+
+   void DFS(int node, vector<int> adj[], bool visited[]) {
+       visited[node] = true;
+       cout << node << " ";
+       for (int neighbor : adj[node]) {
+           if (!visited[neighbor]) {
+               DFS(neighbor, adj, visited);
+           }
+       }
+   }
+
+Other Graph Algorithms
+
+1. Shortest Path Algorithms
+   a. Dijkstra's Algorithm:
+      Finds the shortest path from a source to all vertices in a weighted graph.
+      Use: Priority queue.
+      Time Complexity: O(V + E log V).
+
+      Code:
+      #include <iostream>
+      #include <vector>
+      #include <queue>
+      using namespace std;
+
+      void Dijkstra(int source, vector<pair<int, int>> adj[], int V) {
+          vector<int> dist(V, INT_MAX);
+          priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+
+          dist[source] = 0;
+          pq.push({0, source});
+
+          while (!pq.empty()) {
+              int u = pq.top().second;
+              pq.pop();
+
+              for (auto [weight, v] : adj[u]) {
+                  if (dist[u] + weight < dist[v]) {
+                      dist[v] = dist[u] + weight;
+                      pq.push({dist[v], v});
+                  }
+              }
+          }
+
+          for (int i = 0; i < V; i++) {
+              cout << "Vertex " << i << " Distance " << dist[i] << endl;
+          }
+      }
+
+2. Minimum Spanning Tree (MST)
+   a. Kruskal's Algorithm:
+      Finds the MST using a greedy approach.
+      Use: Union-Find.
+      Time Complexity: O(E log V).
+
+   b. Prim's Algorithm:
+      Finds the MST starting from a specific vertex.
+      Use: Priority queue.
+      Time Complexity: O(V^2) or O(E log V) with a heap.
+
+Applications of Graphs
+1. Social networks (vertices = users, edges = connections).
+2. Navigation systems (e.g., Google Maps).
+3. Network flow (data transfer).
+4. Dependency graphs (task scheduling).
+5. AI and game design (state-space search).

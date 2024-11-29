@@ -1,0 +1,183 @@
+
+Array and Vector Notes
+
+What is an Array?
+An array is a linear data structure that stores a fixed-size sequential collection of elements of the same type.
+
+Key Properties of Arrays:
+- Fixed size.
+- Elements are stored in contiguous memory locations.
+- Random access using index.
+
+Example:
+int arr[5] = {10, 20, 30, 40, 50};
+Accessing: arr[2] gives 30.
+
+Basic Array Operations
+1. Traversal: Access each element of the array.
+2. Insertion: Add an element at a specific position.
+3. Deletion: Remove an element from a specific position.
+4. Search: Find an element (Linear or Binary Search).
+5. Update: Modify an existing element.
+
+Code Examples:
+
+1. Traversal:
+```cpp
+#include <iostream>
+using namespace std;
+
+void traverse(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+}
+```
+
+2. Insertion:
+```cpp
+#include <iostream>
+using namespace std;
+
+void insert(int arr[], int &n, int pos, int value) {
+    for (int i = n; i > pos; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[pos] = value;
+    n++;
+}
+```
+
+3. Deletion:
+```cpp
+#include <iostream>
+using namespace std;
+
+void deleteAtPosition(int arr[], int &n, int pos) {
+    for (int i = pos; i < n - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+    n--;
+}
+```
+
+4. Search (Linear Search):
+```cpp
+#include <iostream>
+using namespace std;
+
+int linearSearch(int arr[], int n, int key) {
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == key) return i;
+    }
+    return -1;
+}
+```
+
+5. Update:
+```cpp
+#include <iostream>
+using namespace std;
+
+void update(int arr[], int index, int value) {
+    arr[index] = value;
+}
+```
+
+Advanced Array Operations:
+1. Reverse an Array.
+2. Find maximum/minimum.
+3. Rotate the array.
+4. Merge two arrays.
+
+---
+
+What is a Vector?
+A vector is a dynamic array provided by the C++ Standard Template Library (STL). It can grow and shrink in size as needed.
+
+Key Properties of Vectors:
+- Dynamic resizing.
+- Random access using index.
+- STL functions for operations like insertion, deletion, and search.
+
+Example:
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int> vec = {10, 20, 30};
+vec.push_back(40); // Add 40 to the end.
+```
+
+Basic Vector Operations:
+1. Add an element: `push_back()`.
+2. Remove an element: `pop_back()`.
+3. Insert at a position: `insert()`.
+4. Delete at a position: `erase()`.
+5. Access element: `[]` or `at()`.
+6. Size of vector: `size()`.
+
+Code Examples:
+
+1. Add and Remove Elements:
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void addRemoveDemo() {
+    vector<int> vec = {10, 20, 30};
+    vec.push_back(40); // Add 40 at the end.
+    vec.pop_back();    // Remove the last element.
+}
+```
+
+2. Insert at a Position:
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void insertDemo() {
+    vector<int> vec = {10, 20, 30};
+    vec.insert(vec.begin() + 1, 15); // Insert 15 at index 1.
+}
+```
+
+3. Delete at a Position:
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void deleteDemo() {
+    vector<int> vec = {10, 20, 30};
+    vec.erase(vec.begin() + 1); // Delete element at index 1.
+}
+```
+
+4. Traverse a Vector:
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void traverseDemo() {
+    vector<int> vec = {10, 20, 30};
+    for (int i = 0; i < vec.size(); i++) {
+        cout << vec[i] << " ";
+    }
+}
+```
+
+Advanced Vector Operations:
+1. Sort a vector: `sort(vec.begin(), vec.end())`.
+2. Find an element: `find(vec.begin(), vec.end(), value)`.
+3. Clear a vector: `clear()`.
+
+Applications:
+1. Storing dynamic data (e.g., dynamic lists).
+2. Implementing algorithms that require resizing.
+3. Frequently used in STL-based solutions.
+
